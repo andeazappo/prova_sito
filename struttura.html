@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guida Grottino di Brescia</title>
+        <style>
+            body{
+                background-color: bisque;
+                margin: 0;
+                padding: 0;
+            }
+            header{
+                background-color: #3a3a3a;
+                color: white;
+                text-align: center;
+            }
+            .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1); /* Zoom effetto durante il passaggio del mouse */
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px); /* Spostamento verso l'alto durante il passaggio del mouse */
+        }
+        footer {
+            background-color: #3a3a3a;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Guida del Grottino di Brescia
+            </h1>
+            <h2>
+                Autori: ...
+            </h2>
+        </header>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="grottino1.jpg" alt="Vista della grotta 1">
+            </div>
+            <div class="gallery-item">
+                <img src="grottino1.jpg" alt="Vista della grotta 2">
+            </div>
+            <div class="gallery-item">
+                <img src="grottino1.jpg" alt="Vista della grotta 3">
+            </div>
+            <div class="gallery-item">
+                <img src="grottino1.jpg" alt="Vista della grotta 4">
+            </div>
+            <div class="gallery-item">
+                <img src="grottino1.jpg" alt="Vista della grotta 5">
+            </div>
+            <div class="gallery-item">
+                <img src="grottino1.jpg" alt="Vista della grotta 6">
+            </div>
+        </div>
+        <footer>
+            <p> info: info.grottino@gmail.com </p>
+        </footer>
+
+    </body>
+</html>
