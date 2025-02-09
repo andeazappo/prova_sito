@@ -8,51 +8,94 @@
                 margin: 0;
                 padding: 0;
             }
+
             header{
                 background-color: #3a3a3a;
                 color: white;
                 text-align: center;
+                border-radius: 8px;
             }
+
             .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
-        }
+            }
 
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
+            .gallery-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease-in-out;
+            }
 
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
+            .gallery-item img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 10px;
+                transition: transform 0.3s ease-in-out;
+            }
 
-        .gallery-item:hover img {
-            transform: scale(1.1); /* Zoom effetto durante il passaggio del mouse */
-        }
+            .gallery-item:hover img {
+                transform: scale(1.1); /* Zoom effetto durante il passaggio del mouse */
+            }
 
-        .gallery-item:hover {
-            transform: translateY(-10px); /* Spostamento verso l'alto durante il passaggio del mouse */
-        }
-        footer {
-            background-color: #3a3a3a;
+            .gallery-item:hover {
+                transform: translateY(-10px); /* Spostamento verso l'alto durante il passaggio del mouse */
+            }
+
+            footer {
+                background-color: #3a3a3a;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .mappa{
+                text-align: center;
+            }
+
+            .download{
+                text-align: center;
+            }
+
+            .download-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: rgb(0, 38, 255); 
             color: white;
-            padding: 10px;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .mappa{
-            text-align: center;
-        }
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            }
+            
+            .download-btn:hover {
+                background-color: #218838;
+            }
+            .descrizione{
+                padding: 20px;
+                background-color: #3a3a3a;
+                color: white;
+                border-radius: 8px;
+            }
+            .meteo{
+                text-align: center;
+                background-color: #3a3a3a;
+                display: inline-block;
+                border-radius: 8px;
+                color: white;
+            }
+            .meteo-container{
+                padding-top: 20px;
+                text-align: center;
+            }
+
         </style>
     </head>
     <body>
@@ -64,6 +107,46 @@
                 Autori: ...
             </h2>
         </header>
+        <div class = "descrizione">
+            Grotta in roccia calcarea per gli appassionati del boulder outdoor. 
+            Il grottino offre una vasta gamma di linee, dalle più facili alle più difficili.
+            Essendo nel bosco è consigliato andarci nelle ore di sole, ma se cercate condizioni di arrampicata migliori 
+            una sessione di arrampicata prima dell'arrivo del sole non è una cattiva idea.
+            Controlla le condizioni meteo qui sotto.
+        </div>
+        <div class="meteo-container">
+            <div class="meteo">
+                <script>
+                    async function getWeather() {
+                        try {
+                            const apiKey = "a18051517774bb42f93a1359b28c3be1";
+                            const city = "Brescia";  // Cambia con la tua città
+                            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+                            
+                            const response = await fetch(url);
+                            const data = await response.json();
+                            
+                            console.log(data);  // Aggiungi questo per vedere la risposta dell'API
+                
+                            if (data.cod === 200) {
+                                document.getElementsByClassName("meteo")[0].innerHTML = `
+                                    <h3>${data.name}</h3>
+                                    <p>🌡️ Temperatura: ${data.main.temp}°C</p>
+                                    <p>🌦️ Meteo: ${data.weather[0].description}</p>
+                                `;
+                            } else {
+                                document.getElementsByClassName("meteo")[0].innerHTML = `<p>Impossibile ottenere i dati meteo. Riprova più tardi.</p>`;
+                            }
+                        } catch (error) {
+                            document.getElementsByClassName("meteo")[0].innerHTML = `<p>Errore nella richiesta dei dati meteo.</p>`;
+                            console.error("Errore:", error);
+                        }
+                    }
+                
+                    getWeather();
+                </script>
+            </div>
+        </div>
         <div class="gallery">
             <div class="gallery-item">
                 <img src="grottino1.jpg" alt="Vista della grotta 1">
@@ -93,6 +176,12 @@
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
             </iframe>
+        </div>
+        <div class = "download">
+            <a href="ciao.txt" download="ciao.txt" class="download-btn">
+                Scarica la guida della grotta
+            </a>
+            
         </div>
         <footer>
             <p> info: info.grottino@gmail.com </p>
