@@ -1,1 +1,1 @@
-git clone https://andeazappo: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@github.com/andeazappo/prova_sito.git
+ciao questo è il sito di prova della futura guida del grottino di sant'eufemia
