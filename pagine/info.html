@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Info Grottino</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="css/menu.css">
+    </head>
+    <body>
+        <div class="descrizione">
+            descrizione della grotta
+        </div>
+        <div class="meteo-container">
+            <div class="meteo">
+                <script>
+                    async function getWeather() {
+                        try {
+                            const apiKey = "a18051517774bb42f93a1359b28c3be1";
+                            const city = "Brescia";  // Cambia con la tua città
+                            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+                            
+                            const response = await fetch(url);
+                            const data = await response.json();
+                            
+                            console.log(data);  // Aggiungi questo per vedere la risposta dell'API
+                
+                            if (data.cod === 200) {
+                                document.getElementsByClassName("meteo")[0].innerHTML = `
+                                    <h3>${data.name}</h3>
+                                    <p>🌡️ Temperatura: ${data.main.temp}°C</p>
+                                    <p>🌦️ Meteo: ${data.weather[0].description}</p>
+                                `;
+                            } else {
+                                document.getElementsByClassName("meteo")[0].innerHTML = `<p>Impossibile ottenere i dati meteo. Riprova più tardi.</p>`;
+                            }
+                        } catch (error) {
+                            document.getElementsByClassName("meteo")[0].innerHTML = `<p>Errore nella richiesta dei dati meteo.</p>`;
+                            console.error("Errore:", error);
+                        }
+                    }
+                
+                    getWeather();
+                </script>
+            </div>
+        </div>
+        <div class = "mappa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.2272245254967!2d10.275260041187156!3d45.525632829457464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47819dd011b32c99%3A0x4c0889c48b7a556c!2sGrottino%20Boulder%20-%20Grotta%20presso%20il%20Traliccio!5e0!3m2!1sit!2sit!4v1739102731391!5m2!1sit!2sit" 
+            width="500" 
+            height="350" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </body>
+</html>

@@ -1,14 +1,7 @@
 body{
-    background-color: bisque;
+    background-color: whitesmoke;
     margin: 0;
     padding: 0;
-}
-
-header{
-    background-color: #3a3a3a;
-    color: white;
-    text-align: center;
-    border-radius: 8px;
 }
 
 .gallery {
@@ -36,10 +29,12 @@ padding: 20px;
 
 .gallery-item:hover img {
     transform: scale(1.1); /* Zoom effetto durante il passaggio del mouse */
+
 }
 
 .gallery-item:hover {
-    transform: translateY(-10px); /* Spostamento verso l'alto durante il passaggio del mouse */
+    transform: translateY(-10px);
+    box-shadow: 5px 5px darkgrey;
 }
 
 footer {
@@ -74,6 +69,7 @@ transition: background 0.3s ease;
     background-color: #218838;
 }
 .descrizione{
+    margin: 1px;
     padding: 20px;
     background-color: #3a3a3a;
     color: white;
@@ -89,4 +85,7 @@ transition: background 0.3s ease;
 .meteo-container{
     padding-top: 20px;
     text-align: center;
+}
+div{
+    margin-bottom: 10px;
 }
